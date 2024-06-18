@@ -46,13 +46,13 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
         }
     }
 
-    if (currentText = "te")
+    if (currentText = "ts")
     {
         BaseUI.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             formatSheet()
-            formatTable()
+            formatActiveRegion()
         }
     }
 
@@ -61,7 +61,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
         BaseUI.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            deleteSheet()
+            deleteSheets()
         }
     }
 
@@ -101,6 +101,15 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
             Send("e")
             KeyWait("e")
             Send("e")
+        }
+    }
+
+    if (currentText = "convertform")
+    {
+        BaseUI.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            convertFormulatoAbsolute()
         }
     }
     return

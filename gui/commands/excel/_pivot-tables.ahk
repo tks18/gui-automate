@@ -34,7 +34,7 @@ handleExcelPivotFunctions(eventObject, BaseUI) {
         BaseUI.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            formatPivotValues()
+            updatePivotStyle()
         }
     }
 
@@ -52,7 +52,16 @@ handleExcelPivotFunctions(eventObject, BaseUI) {
         BaseUI.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            transposePivotFields()
+            transposePivotValueFields()
+        }
+    }
+
+    if (currentText = "cpt")
+    {
+        BaseUI.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            clearPivotFields()
         }
     }
 }
