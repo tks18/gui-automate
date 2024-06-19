@@ -28,6 +28,16 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
         Run("excel.exe /m")
     }
 
+
+    if (currentText = "tc")
+    {
+        BaseUI.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            removeAllFormatting()
+        }
+    }
+
     if (currentText = "tt")
     {
         BaseUI.destroy()
@@ -112,5 +122,71 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
             convertFormulatoAbsolute()
         }
     }
+
+    if (currentText = "cfs") {
+        BaseUI.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            saveAndClose()
+        }
+    }
+
+    if (currentText = "cfns") {
+        BaseUI.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            noSaveAndClose()
+        }
+    }
+
+    if (currentText = "cvvals") {
+        BaseUI.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            convertValueTexttoNumber()
+        }
+    }
+
+    if (currentText = "createworkbooksummary") {
+        BaseUI.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            createWorkbookSheetSummary()
+        }
+    }
+
+    if (currentText = "random") {
+        BaseUI.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            createRandomData()
+        }
+    }
+    if (currentText = "ism") {
+        onNumberofSheetEnter(eventObject, item) {
+        sheetNumbers := BaseUI.BaseGUIUserInputBox.value
+        onSheetNameEnter(eventObject, item) {
+            sheetName := BaseUI.BaseGUIUserInputBox.value
+            BaseUI.destroy()
+            if WinActive("ahk_exe EXCEL.EXE") {
+                insertSheets(sheetNumbers, sheetName)
+            }
+        }
+        BaseUI.addFreeUserInputBox("Sheet Name Template", onSheetNameEnter)
+    }
+    BaseUI.addFreeUserInputBox("Number of Sheets", onNumberofSheetEnter)
+    }
+
+    if (currentText = "iss") {
+        onEnterPress(eventObject, item) {
+        sheetName := BaseUI.BaseGUIUserInputBox.value
+        BaseUI.destroy()
+        if WinActive("ahk_exe EXCEL.EXE") {
+            insertSheets(1, sheetName)
+        }
+    }
+    BaseUI.addFreeUserInputBox("Sheet Name", onEnterPress)
+    }
+
     return
 }

@@ -8,7 +8,9 @@ removeAllFormatting() {
         selectedRange := oExcel.Range(selectionAddress)
 
         selectedRange.Borders.LineStyle := -4142
-        selectedRange.Interior.Color := 0xFFFFFF
+        selectedRange.Interior.Pattern := -4142
+        selectedRange.Interior.TintAndShade := 0
+        selectedRange.Interior.PatternTintAndShade := 0
         selectedRange.Font.Bold := False
         selectedRange.Font.Color := 0x0
     } Catch {
@@ -118,6 +120,22 @@ selectActiveRegion() {
     }
 }
 
+insertSheets(noofsheets, sheetname) {
+
+    oExcel := ""
+    Try
+    {
+        oExcel := ComObjActive("Excel.Application")
+        workbook := oExcel.ActiveWorkbook
+        loop noofsheets {
+            newSheet := workbook.Sheets.Add()
+            newSheet.Name := noofsheets = 1 ? sheetname : sheetname . " - " . A_Index
+        }
+    } Catch {
+        MsgBox "Macro Failed"
+    }
+}
+
 deleteSheets() {
     oExcel := ""
     Try
@@ -200,4 +218,80 @@ convertFormulatoAbsolute() {
     } Catch {
         MsgBox "Macro Failed"
     }
+}
+
+createWorkbookSheetSummary() {
+    oExcel := ""
+    Try
+    {
+        oExcel := ComObjActive("Excel.Application")
+
+        summarySheet := oExcel.ActiveWorkbook.Sheets.Add
+
+        summarySheet.Cells(1, 1).Value := "S.No"
+        summarySheet.Cells(1, 2).Value := "Name"
+        summarySheet.Cells(1, 3).Value := "Reference"
+
+        i := 1
+        summarySheet.Activate()
+        For workSheet In oExcel.ActiveWorkbook.Worksheets {
+            If (workSheet.Name != summarySheet.Name) {
+                currentRow := i + 1
+                summarySheet.Cells(currentRow, 1).Value := currentRow - 1
+                summarySheet.Cells(currentRow, 2).Value := workSheet.Name
+                summarySheet.Hyperlinks.Add(summarySheet.Cells(currentRow, 3), "", "'" . workSheet.Name . "'!A1", "Go to " . workSheet.Name . " Sheet", "Go to " . workSheet.Name)
+                i := i + 1
+            }
+        }
+        summarySheet.Columns("A:C").AutoFit()
+        formatActiveRegion()
+        formatSheet()
+        oExcel.Range("C2").Select()
+        oExcel.Range(oExcel.Selection, oExcel.Selection.End(-4121)).Select()
+        oExcel.Selection.Font.ThemeColor := 5
+        oExcel.Selection.Font.TintAndShade := -0.249977111117893
+
+
+    } Catch {
+        MsgBox "Macro Failed"
+    }
+}
+
+saveAndClose() {
+    oExcel := ""
+    Try
+    {
+        oExcel := ComObjActive("Excel.Application")
+
+        oExcel.ActiveWorkbook.Close(True)
+
+    } Catch {
+        MsgBox "Macro Failed"
+    }
+}
+
+noSaveAndClose() {
+    oExcel := ""
+    Try
+    {
+        oExcel := ComObjActive("Excel.Application")
+
+        oExcel.ActiveWorkbook.Close(False)
+
+    } Catch {
+        MsgBox "Macro Failed"
+    }
+}
+
+createRandomData() {
+    oExcel := ""
+    Try
+    {
+        oExcel := ComObjActive("Excel.Application")
+
+    } Catch {
+        MsgBox "Macro Failed"
+    }
+    activeSheet := oExcel.ActiveSheet
+    activeSheet.Range("A1:B1").Value := [("1"), ("2")]
 }

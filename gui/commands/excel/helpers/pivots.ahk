@@ -127,10 +127,9 @@ createPivotTable() {
         oExcel := ComObjActive("Excel.Application")
         activeRange := oExcel.ActiveCell.CurrentRegion
 
-
         pivotCache := oExcel.ActiveWorkbook.PivotCaches.Create(
             1,
-            "[" . oExcel.ActiveWorkbook.Name . "]" . oExcel.ActiveSheet.Name . "!" . oExcel.ActiveCell.CurrentRegion.Address
+            oExcel.ActiveSheet.Name . "!" . oExcel.ActiveCell.CurrentRegion.Address
         )
 
         newWorksheetName := ""

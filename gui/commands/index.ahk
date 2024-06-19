@@ -3,20 +3,36 @@
 #Include "apps\index.ahk"
 #Include "folders\index.ahk"
 #Include "search\index.ahk"
+#Include "browser\index.ahk"
+#Include "system\index.ahk"
 
 handleMainFunction(eventObject, BaseUI) {
     currentText := eventObject.value
     if (currentText = "xl") {
         addExcelEditBox(BaseUI)
         BaseUI.BaseGUI.Show("AutoSize")
-    } else if (currentText = "f" A_SPACE) {
+    }
+
+    if (currentText = "f" A_SPACE) {
         addFolderEditBox(BaseUI)
         BaseUI.BaseGUI.Show("AutoSize")
-    } else if (currentText = "a" A_SPACE) {
+    }
+
+    if (currentText = "a" A_SPACE) {
         addAppsEditBox(BaseUI)
         BaseUI.BaseGUI.Show("AutoSize")
-    } else if (currentText = "search") {
+    }
+    if (currentText = "search") {
         addSearchEditBox(BaseUI)
+        BaseUI.BaseGUI.Show("AutoSize")
+    }
+    if (currentText = "br") {
+        addBrwoserEditBox(BaseUI)
+        BaseUI.BaseGUI.Show("AutoSize")
+    }
+
+    if (currentText = "sys") {
+        addSystemEditBox(BaseUI)
         BaseUI.BaseGUI.Show("AutoSize")
     }
 
