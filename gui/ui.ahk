@@ -14,6 +14,7 @@ Class BaseUI {
         this.BaseGUI.OnEvent("Escape", this.onEscape)
         this.uiDestroyed := false
         this.editBoxTracker := []
+        this.btnTracker := []
         this.BaseGUI.MarginX := "15"
         this.BaseGUI.MarginY := "15"
         this.BaseGUI.BackColor := "2D2B55"
@@ -37,6 +38,12 @@ Class BaseUI {
         }
     }
 
+    disableAllBtns() {
+        for btn in this.btnTracker {
+            btn.Enabled := false
+        }
+    }
+
     addEditBox(onChangeHandler, editTitle := "") {
         if (editTitle != "") {
             this.BaseGUI.Add("Text", GUITITLESTYLE, editTitle)
@@ -50,6 +57,8 @@ Class BaseUI {
     }
 
     addSearchBar(title, url) {
+        this.disableAllEditBoxes()
+        this.disableAllBtns()
         this.BaseGUI.Add("Text", GUITITLESTYLE, title)
         this.BaseGUISearchBox := this.BaseGUI.Add("Edit", GUIEDITBOXSTYLE . " -WantReturn")
 
@@ -63,9 +72,25 @@ Class BaseUI {
 
         this.BaseGUIDefaultButton := this.BaseGUI.Add("Button", "x-10 y-10 w1 h1 +default", "")
         this.BaseGUIDefaultButton.onEvent("Click", onEnterPress)
-        this.disableAllEditBoxes()
+        this.BaseGUISearchBox.Focus()
+        this.btnTracker.Push(this.BaseGUIDefaultButton)
         this.BaseGUI.Show("AutoSize")
-        return
+        return this.BaseGUISearchBox
+    }
+
+    addFreeUserInputBox(title, handler) {
+        this.disableAllEditBoxes()
+        this.disableAllBtns()
+        this.BaseGUI.Add("Text", GUITITLESTYLE, title)
+        this.BaseGUIUserInputBox := this.BaseGUI.Add("Edit", GUIEDITBOXSTYLE . " -WantReturn")
+        this.editBoxTracker.Push(this.BaseGUIUserInputBox)
+
+        this.BaseGUIDefaultButton := this.BaseGUI.Add("Button", "x-10 y-10 w1 h1 +default", "")
+        this.BaseGUIDefaultButton.onEvent("Click", handler)
+        this.BaseGUIUserInputBox.Focus()
+        this.btnTracker.Push(this.BaseGUIDefaultButton)
+        this.BaseGUI.Show("AutoSize")
+        return this.BaseGUIUserInputBox
     }
 
     onEscape() {
