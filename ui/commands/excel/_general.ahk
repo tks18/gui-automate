@@ -1,4 +1,4 @@
-#Include "%A_ScriptDir%\GUI\commands\excel\helpers\general.ahk"
+#Include "%A_ScriptDir%\UI\commands\excel\helpers\general.ahk"
 
 handleExcelGeneralFunctions(eventObject, BaseUI) {
     currentText := eventObject.value

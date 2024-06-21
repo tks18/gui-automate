@@ -1,4 +1,4 @@
-#Include "../utils/index.ahk"
+#Include "%A_ScriptDir%/utils/index.ahk"
 
 BACKGROUND := "2D2B55"
 TEXT := "A599E9"
@@ -20,8 +20,8 @@ Class BaseUI {
         this.BaseGUI.BackColor := "2D2B55"
         this.BaseGUI.SetFont("s9", "Verdana")
         this.BaseGUI.Title := "Shan.tk's Tools"
-        this.BaseGUI.Add("Text", GUIBOTTOMTEXTSTYLE, "Developed by Shan.tk 💜")
         this.BaseGUI.Opt("+AlwaysOnTop -SysMenu -ToolWindow -caption +Border")
+        this.BaseGUI.Add("Text", GUIBOTTOMTEXTSTYLE, "Developed by Shan.tk 💜")
         this.BaseGUITitle := this.BaseGUI.Add("Text", GUITITLESTYLE, "Enter the Command:")
     }
 
@@ -36,6 +36,10 @@ Class BaseUI {
         for editBox in this.editBoxTracker {
             editBox.Enabled := false
         }
+    }
+
+    refreshUI() {
+        this.BaseGUI.Show("AutoSize Center")
     }
 
     disableAllBtns() {

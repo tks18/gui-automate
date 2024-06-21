@@ -1,4 +1,4 @@
-#Include "%A_ScriptDir%\GUI\commands\excel\helpers\comments.ahk"
+#Include "%A_ScriptDir%\UI\commands\excel\helpers\comments.ahk"
 
 handleExcelCommentFunctions(eventObject, BaseUI) {
     currentText := eventObject.value

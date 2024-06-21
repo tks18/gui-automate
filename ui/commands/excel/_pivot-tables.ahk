@@ -1,4 +1,4 @@
-#Include "%A_ScriptDir%\GUI\commands\excel\helpers\pivots.ahk"
+#Include "%A_ScriptDir%\UI\commands\excel\helpers\pivots.ahk"
 
 handleExcelPivotFunctions(eventObject, BaseUI) {
     currentText := eventObject.value

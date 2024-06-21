@@ -37,5 +37,5 @@ addBrwoserEditBox(BaseUI) {
     handlerFunction(eventObject, item) {
         handleBrowserFunctions(eventObject, BaseUI)
     }
-    BaseUI.addEditBox(handlerFunction, "Application Shortcuts")
+    BaseUI.addEditBox(handlerFunction, "Browser Actions")
 }

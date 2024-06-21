@@ -1,4 +1,4 @@
-#Include "%A_ScriptDir%\GUI\commands\excel\helpers\wipro-configs.ahk"
+#Include "%A_ScriptDir%\UI\commands\excel\helpers\wipro-configs.ahk"
 
 handleExcelWiproTableFunctions(eventObject, BaseUI) {
     currentText := eventObject.value
