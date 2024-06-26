@@ -4,36 +4,40 @@
 #Include "open\index.ahk"
 #Include "system\index.ahk"
 
+commandConfig := [{
+    commandTitle: "Reload App",
+    phrase: "rel",
+    handleCommands: appReload
+}, {
+    commandTitle: "Open Script for Editing",
+    phrase: "dir",
+    handleCommands: openScript
+}, {
+    commandTitle: "Open Script for Editing",
+    phrase: "dir",
+    handleCommands: openScript
+}
+]
+
 handleMainFunction(eventObject, BaseUI) {
     currentText := eventObject.value
     if (currentText = "xl") {
         addExcelEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        BaseUI.gui.Show("AutoSize")
     }
 
     if (currentText = "o") {
         addOpenEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        BaseUI.gui.Show("AutoSize")
     }
 
     if (currentText = "search") {
         addSearchEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        BaseUI.gui.Show("AutoSize")
     }
 
     if (currentText = "sys") {
         addSystemEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        BaseUI.gui.Show("AutoSize")
     }
-
-    if (!BaseUI.uiDestroyed) {
-        handleSettingsFunctions(eventObject, BaseUI)
-    }
-}
-
-addMainEditBox(BaseUI) {
-    handlerFunction(eventObject, item) {
-        handleMainFunction(eventObject, BaseUI)
-    }
-    BaseUI.addEditBox(handlerFunction)
 }

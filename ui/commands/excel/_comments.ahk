@@ -5,7 +5,7 @@ handleExcelCommentFunctions(eventObject, BaseUI) {
     if (currentText = "rn")
     {
         onEnterPress(eventObject, item) {
-        userInput := BaseUI.BaseGUIUserInputBox.value
+        userInput := BaseUI.guiUserInputBox.value
         BaseUI.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
             createTodoComment(userInput)
