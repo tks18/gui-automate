@@ -6,16 +6,16 @@ handleOpenFunctions(eventObject, BaseUI) {
     currentText := eventObject.value
     if (currentText = "f") {
         addFolderEditBox(BaseUI)
-        BaseUI.gui.Show("AutoSize")
+        BaseUI.BaseGUI.Show("AutoSize")
     }
 
     if (currentText = "a") {
         addAppsEditBox(BaseUI)
-        BaseUI.gui.Show("AutoSize")
+        BaseUI.BaseGUI.Show("AutoSize")
     }
     if (currentText = "b") {
         addBrwoserEditBox(BaseUI)
-        BaseUI.gui.Show("AutoSize")
+        BaseUI.BaseGUI.Show("AutoSize")
     }
 }
 

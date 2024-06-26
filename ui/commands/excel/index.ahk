@@ -3,10 +3,6 @@
 #Include "%A_ScriptDir%\UI\commands\excel\_wipro-tables.ahk"
 #Include "%A_ScriptDir%\UI\commands\excel\_comments.ahk"
 
-
-handleExcelCommands(eventObject, BaseUI) {
-
-}
 handleExcelFunctions(eventObject, BaseUI) {
     if (!BaseUI.uiDestroyed) {
         handleExcelGeneralFunctions(eventObject, BaseUI)

@@ -164,9 +164,9 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
     }
     if (currentText = "ism") {
         onNumberofSheetEnter(eventObject, item) {
-        sheetNumbers := BaseUI.guiUserInputBox.value
+        sheetNumbers := BaseUI.BaseGUIUserInputBox.value
         onSheetNameEnter(eventObject, item) {
-            sheetName := BaseUI.guiUserInputBox.value
+            sheetName := BaseUI.BaseGUIUserInputBox.value
             BaseUI.destroy()
             if WinActive("ahk_exe EXCEL.EXE") {
                 insertSheets(sheetNumbers, sheetName)
@@ -179,7 +179,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "iss") {
         onEnterPress(eventObject, item) {
-        sheetName := BaseUI.guiUserInputBox.value
+        sheetName := BaseUI.BaseGUIUserInputBox.value
         BaseUI.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
             insertSheets(1, sheetName)
