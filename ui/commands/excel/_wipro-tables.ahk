@@ -1,10 +1,10 @@
 #Include "%A_ScriptDir%\UI\commands\excel\helpers\wipro-configs.ahk"
 
-handleExcelWiproTableFunctions(eventObject, BaseUI) {
+handleExcelWiproTableFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "wsfptb")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -15,7 +15,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wsfptu")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -26,7 +26,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wsfpti")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -37,7 +37,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wsfcptb")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createWiproSalesPivot(["REVENUE_FOR_THE_MONTH_IN_BASE_CURRENCY"])
@@ -46,7 +46,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wsfcptu")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createWiproSalesPivot(["REVENUE_USD_REPORTED"])
@@ -55,7 +55,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wsfcpti")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createWiproSalesPivot(["REVENUE_INR_REPORTED"])
@@ -64,7 +64,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wzpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -74,7 +74,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
     }
     if (currentText = "wzcpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createWiproZCOPPivot()
@@ -82,7 +82,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
     }
     if (currentText = "wubpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -92,7 +92,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
     }
     if (currentText = "wubcpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createWiproUBPivot()
@@ -101,7 +101,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wdrsptb")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -113,7 +113,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
     }
     if (currentText = "wdrscptb")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             valueFields := ["BAL_IN_DOCCUR", "DOC_CUR_30", "DOC_CUR_60", "DOC_CUR_90", "DOC_CUR_120", "DOC_CUR_120_2"]
@@ -124,7 +124,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wdrsptu")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -136,7 +136,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
     }
     if (currentText = "wdrscptu")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             valueFields := ["BAL_IN_USD", "USD_30", "USD_60", "USD_90", "USD_120", "USD_120_3"]
@@ -147,7 +147,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wdrsinvptb")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -158,7 +158,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
     }
     if (currentText = "wdrsinvcptb")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             valueFields := ["BAL_IN_DOCCUR"]
@@ -168,7 +168,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wdrsinvptu")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -179,7 +179,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
     }
     if (currentText = "wdrsinvcptu")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             valueFields := ["BAL_IN_USD"]
@@ -189,7 +189,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wfpobpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -200,7 +200,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wfpobcpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createWiproFDPOBPivot(["ALLOC_AMT"])
@@ -209,7 +209,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wcolpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createWiproDefaultColumnPivotFields()
@@ -218,7 +218,7 @@ handleExcelWiproTableFunctions(eventObject, BaseUI) {
 
     if (currentText = "wrowpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createWiproDefaultRowPivotFields()

@@ -1,9 +1,9 @@
 #Include "%A_ScriptDir%\UI\index.ahk"
 
 CapsLock & Space:: {
-    toolsGUI := BaseUI()
+    toolsGUI := Interface()
     addMainEditBox(toolsGUI)
-    toolsGUI.BaseGUI.Show()
+    toolsGUI.ui.Show()
     return
 }
 

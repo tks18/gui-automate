@@ -1,45 +1,45 @@
-handleFolderFunctions(eventObject, BaseUI) {
+handleFolderFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "down") ; Downloads
     {
-        BaseUI.destroy()
+        Interface.destroy()
         Run("`"C:\Users\" A_Username "\Downloads`"")
     }
     if (currentText = "tools")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         Run("C:\Tools")
     }
     if (currentText = "wdata") ; Wipro Data Files
     {
-        BaseUI.destroy()
+        Interface.destroy()
         Run("`"C:\Users\" A_Username "\OneDrive - Deloitte (O365D)\Works\Wipro\O2C\_Data Files`"")
     }
     if (currentText = "od") ; Onedrive
     {
-        BaseUI.destroy()
+        Interface.destroy()
         Run("`"C:\Users\" A_Username "\OneDrive - Deloitte (O365D)`"")
     }
     if (currentText = "works")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         Run("`"C:\Users\" A_Username "\OneDrive - Deloitte (O365D)\Works`"")
     }
     if (currentText = "wipro")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         Run("`"C:\Users\" A_Username "\OneDrive - Deloitte (O365D)\Works\Wipro`"")
     }
     if (currentText = "rec") ; Recycle Bin
     {
-        BaseUI.destroy()
+        Interface.destroy()
         Run("::{645FF040-5081-101B-9F08-00AA002F954E}")
     }
 }
 
-addFolderEditBox(BaseUI) {
+addFolderEditBox(Interface) {
     handlerFunction(eventObject, item) {
-        handleFolderFunctions(eventObject, BaseUI)
+        handleFolderFunctions(eventObject, Interface)
     }
-    BaseUI.addEditBox(handlerFunction, "Open Folders")
+    Interface.addEditBox(handlerFunction, "Open Folders")
 }

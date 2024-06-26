@@ -2,26 +2,26 @@
 #Include "folders\index.ahk"
 #Include "browser\index.ahk"
 
-handleOpenFunctions(eventObject, BaseUI) {
+handleOpenFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "f") {
-        addFolderEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        addFolderEditBox(Interface)
+        Interface.ui.Show("AutoSize")
     }
 
     if (currentText = "a") {
-        addAppsEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        addAppsEditBox(Interface)
+        Interface.ui.Show("AutoSize")
     }
     if (currentText = "b") {
-        addBrwoserEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        addBrwoserEditBox(Interface)
+        Interface.ui.Show("AutoSize")
     }
 }
 
-addOpenEditBox(BaseUI) {
+addOpenEditBox(Interface) {
     handlerFunction(eventObject, item) {
-        handleOpenFunctions(eventObject, BaseUI)
+        handleOpenFunctions(eventObject, Interface)
     }
-    BaseUI.addEditBox(handlerFunction, "Open Apps, Folders, Browser")
+    Interface.addEditBox(handlerFunction, "Open Apps, Folders, Browser")
 }

@@ -1,10 +1,10 @@
 #Include "%A_ScriptDir%\UI\commands\excel\helpers\pivots.ahk"
 
-handleExcelPivotFunctions(eventObject, BaseUI) {
+handleExcelPivotFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "pt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createPivotTable()
@@ -13,7 +13,7 @@ handleExcelPivotFunctions(eventObject, BaseUI) {
 
     if (currentText = "sapt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             sortAscendingPivotTable()
@@ -22,7 +22,7 @@ handleExcelPivotFunctions(eventObject, BaseUI) {
 
     if (currentText = "sdpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             sortDescendingPivotTable()
@@ -31,7 +31,7 @@ handleExcelPivotFunctions(eventObject, BaseUI) {
 
     if (currentText = "tpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             updatePivotStyle()
@@ -40,7 +40,7 @@ handleExcelPivotFunctions(eventObject, BaseUI) {
 
     if (currentText = "trpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             transposePivotFields()
@@ -49,7 +49,7 @@ handleExcelPivotFunctions(eventObject, BaseUI) {
 
     if (currentText = "cvpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             transposePivotValueFields()
@@ -58,7 +58,7 @@ handleExcelPivotFunctions(eventObject, BaseUI) {
 
     if (currentText = "cpt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             clearPivotFields()

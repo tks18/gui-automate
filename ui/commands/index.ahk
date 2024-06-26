@@ -4,36 +4,36 @@
 #Include "open\index.ahk"
 #Include "system\index.ahk"
 
-handleMainFunction(eventObject, BaseUI) {
+handleMainFunction(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "xl") {
-        addExcelEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        addExcelEditBox(Interface)
+        Interface.ui.Show("AutoSize")
     }
 
     if (currentText = "o") {
-        addOpenEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        addOpenEditBox(Interface)
+        Interface.ui.Show("AutoSize")
     }
 
     if (currentText = "search") {
-        addSearchEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        addSearchEditBox(Interface)
+        Interface.ui.Show("AutoSize")
     }
 
     if (currentText = "sys") {
-        addSystemEditBox(BaseUI)
-        BaseUI.BaseGUI.Show("AutoSize")
+        addSystemEditBox(Interface)
+        Interface.ui.Show("AutoSize")
     }
 
-    if (!BaseUI.uiDestroyed) {
-        handleSettingsFunctions(eventObject, BaseUI)
+    if (!Interface.uiDestroyed) {
+        handleSettingsFunctions(eventObject, Interface)
     }
 }
 
-addMainEditBox(BaseUI) {
+addMainEditBox(Interface) {
     handlerFunction(eventObject, item) {
-        handleMainFunction(eventObject, BaseUI)
+        handleMainFunction(eventObject, Interface)
     }
-    BaseUI.addEditBox(handlerFunction)
+    Interface.addEditBox(handlerFunction)
 }

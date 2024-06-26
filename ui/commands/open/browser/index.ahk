@@ -7,35 +7,35 @@ getWorkChromeProfile(url) {
 }
 
 
-handleBrowserFunctions(eventObject, BaseUI) {
+handleBrowserFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "ap") {
-        BaseUI.addSearchBar("Go to any Personal URL", getPersonalChromeProfile("REPLACEME"))
+        Interface.addSearchBar("Go to any Personal URL", getPersonalChromeProfile("REPLACEME"))
     }
 
     if (currentText = "aw") {
-        BaseUI.addSearchBar("Go to any Work URL", getWorkChromeProfile("REPLACEME"))
+        Interface.addSearchBar("Go to any Work URL", getWorkChromeProfile("REPLACEME"))
     }
 
     if (currentText = "omnia") {
-        BaseUI.destroy()
+        Interface.destroy()
         Run(getWorkChromeProfile("https://deloitteomniaapa.deloitte.com/"))
     }
 
     if (currentText = "dc") {
-        BaseUI.destroy()
+        Interface.destroy()
         Run(getWorkChromeProfile("https://deloitteconnect.deloitte.com/"))
     }
 
     if (currentText = "music") {
-        BaseUI.destroy()
+        Interface.destroy()
         Run(getPersonalChromeProfile("https://open.spotify.com/"))
     }
 }
 
-addBrwoserEditBox(BaseUI) {
+addBrwoserEditBox(Interface) {
     handlerFunction(eventObject, item) {
-        handleBrowserFunctions(eventObject, BaseUI)
+        handleBrowserFunctions(eventObject, Interface)
     }
-    BaseUI.addEditBox(handlerFunction, "Browser Actions")
+    Interface.addEditBox(handlerFunction, "Browser Actions")
 }

@@ -7,27 +7,27 @@ GUIEDITBOXSTYLE := "xm w200 -E0x200 +Border Background" . BACKGROUND . " c" . TE
 GUIBOTTOMTEXTSTYLE := "xm w200 +Center -E0x200 c" . TEXT
 
 
-Class BaseUI {
+Class Interface {
 
     __New() {
-        this.BaseGUI := Gui()
-        this.BaseGUI.OnEvent("Escape", this.onEscape)
+        this.ui := Gui()
+        this.ui.OnEvent("Escape", this.onEscape)
         this.uiDestroyed := false
         this.editBoxTracker := []
         this.btnTracker := []
-        this.BaseGUI.MarginX := "15"
-        this.BaseGUI.MarginY := "15"
-        this.BaseGUI.BackColor := "2D2B55"
-        this.BaseGUI.SetFont("s9", "Verdana")
-        this.BaseGUI.Title := "Shan.tk's Tools"
-        this.BaseGUI.Opt("+AlwaysOnTop -SysMenu -ToolWindow -caption +Border")
-        this.BaseGUI.Add("Text", GUIBOTTOMTEXTSTYLE, "Developed by Shan.tk 💜")
-        this.BaseGUITitle := this.BaseGUI.Add("Text", GUITITLESTYLE, "Enter the Command:")
+        this.ui.MarginX := "15"
+        this.ui.MarginY := "15"
+        this.ui.BackColor := "2D2B55"
+        this.ui.SetFont("s9", "Verdana")
+        this.ui.Title := "Shan.tk's Tools"
+        this.ui.Opt("+AlwaysOnTop -SysMenu -ToolWindow -caption +Border")
+        this.ui.Add("Text", GUIBOTTOMTEXTSTYLE, "Developed by Shan.tk 💜")
+        this.uiTitle := this.ui.Add("Text", GUITITLESTYLE, "Enter the Command:")
     }
 
     #WinActivateForce
     destroy() {
-        this.BaseGUI.Destroy()
+        this.ui.Destroy()
         this.uiDestroyed := true
         WinActivate("A")
     }
@@ -39,7 +39,7 @@ Class BaseUI {
     }
 
     refreshUI() {
-        this.BaseGUI.Show("AutoSize Center")
+        this.ui.Show("AutoSize Center")
     }
 
     disableAllBtns() {
@@ -50,10 +50,10 @@ Class BaseUI {
 
     addEditBox(onChangeHandler, editTitle := "") {
         if (editTitle != "") {
-            this.BaseGUI.Add("Text", GUITITLESTYLE, editTitle)
+            this.ui.Add("Text", GUITITLESTYLE, editTitle)
         }
         this.disableAllEditBoxes()
-        uiEditBox := this.BaseGUI.Add("Edit", GUIEDITBOXSTYLE)
+        uiEditBox := this.ui.Add("Edit", GUIEDITBOXSTYLE)
         uiEditBox.onEvent("Change", onChangeHandler)
         uiEditBox.Focus()
         this.editBoxTracker.Push(uiEditBox)
@@ -63,38 +63,38 @@ Class BaseUI {
     addSearchBar(title, url) {
         this.disableAllEditBoxes()
         this.disableAllBtns()
-        this.BaseGUI.Add("Text", GUITITLESTYLE, title)
-        this.BaseGUISearchBox := this.BaseGUI.Add("Edit", GUIEDITBOXSTYLE . " -WantReturn")
+        this.ui.Add("Text", GUITITLESTYLE, title)
+        this.uiSearchBox := this.ui.Add("Edit", GUIEDITBOXSTYLE . " -WantReturn")
 
         onEnterPress(eventObject, item) {
-            searchText := this.BaseGUISearchBox.value
+            searchText := this.uiSearchBox.value
             this.destroy()
             querySafe := uriEncode(searchText)
             finalQuery := StrReplace(url, "REPLACEME", querySafe, , , 1)
             Run(finalQuery)
         }
 
-        this.BaseGUIDefaultButton := this.BaseGUI.Add("Button", "x-10 y-10 w1 h1 +default", "")
-        this.BaseGUIDefaultButton.onEvent("Click", onEnterPress)
-        this.BaseGUISearchBox.Focus()
-        this.btnTracker.Push(this.BaseGUIDefaultButton)
-        this.BaseGUI.Show("AutoSize")
-        return this.BaseGUISearchBox
+        this.uiDefaultButton := this.ui.Add("Button", "x-10 y-10 w1 h1 +default", "")
+        this.uiDefaultButton.onEvent("Click", onEnterPress)
+        this.uiSearchBox.Focus()
+        this.btnTracker.Push(this.uiDefaultButton)
+        this.ui.Show("AutoSize")
+        return this.uiSearchBox
     }
 
     addFreeUserInputBox(title, handler) {
         this.disableAllEditBoxes()
         this.disableAllBtns()
-        this.BaseGUI.Add("Text", GUITITLESTYLE, title)
-        this.BaseGUIUserInputBox := this.BaseGUI.Add("Edit", GUIEDITBOXSTYLE . " -WantReturn")
-        this.editBoxTracker.Push(this.BaseGUIUserInputBox)
+        this.ui.Add("Text", GUITITLESTYLE, title)
+        this.uiUserInputBox := this.ui.Add("Edit", GUIEDITBOXSTYLE . " -WantReturn")
+        this.editBoxTracker.Push(this.uiUserInputBox)
 
-        this.BaseGUIDefaultButton := this.BaseGUI.Add("Button", "x-10 y-10 w1 h1 +default", "")
-        this.BaseGUIDefaultButton.onEvent("Click", handler)
-        this.BaseGUIUserInputBox.Focus()
-        this.btnTracker.Push(this.BaseGUIDefaultButton)
-        this.BaseGUI.Show("AutoSize")
-        return this.BaseGUIUserInputBox
+        this.uiDefaultButton := this.ui.Add("Button", "x-10 y-10 w1 h1 +default", "")
+        this.uiDefaultButton.onEvent("Click", handler)
+        this.uiUserInputBox.Focus()
+        this.btnTracker.Push(this.uiDefaultButton)
+        this.ui.Show("AutoSize")
+        return this.uiUserInputBox
     }
 
     onEscape() {

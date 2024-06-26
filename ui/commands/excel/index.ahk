@@ -3,27 +3,27 @@
 #Include "%A_ScriptDir%\UI\commands\excel\_wipro-tables.ahk"
 #Include "%A_ScriptDir%\UI\commands\excel\_comments.ahk"
 
-handleExcelFunctions(eventObject, BaseUI) {
-    if (!BaseUI.uiDestroyed) {
-        handleExcelGeneralFunctions(eventObject, BaseUI)
+handleExcelFunctions(eventObject, Interface) {
+    if (!Interface.uiDestroyed) {
+        handleExcelGeneralFunctions(eventObject, Interface)
     }
 
-    if (!BaseUI.uiDestroyed) {
-        handleExcelPivotFunctions(eventObject, BaseUI)
+    if (!Interface.uiDestroyed) {
+        handleExcelPivotFunctions(eventObject, Interface)
     }
 
-    if (!BaseUI.uiDestroyed) {
-        handleExcelWiproTableFunctions(eventObject, BaseUI)
+    if (!Interface.uiDestroyed) {
+        handleExcelWiproTableFunctions(eventObject, Interface)
     }
 
-    if (!BaseUI.uiDestroyed) {
-        handleExcelCommentFunctions(eventObject, BaseUI)
+    if (!Interface.uiDestroyed) {
+        handleExcelCommentFunctions(eventObject, Interface)
     }
 }
 
-addExcelEditBox(BaseUI) {
+addExcelEditBox(Interface) {
     handlerFunction(eventObject, item) {
-        handleExcelFunctions(eventObject, BaseUI)
+        handleExcelFunctions(eventObject, Interface)
     }
-    BaseUI.addEditBox(handlerFunction, "Excel Functions")
+    Interface.addEditBox(handlerFunction, "Excel Functions")
 }

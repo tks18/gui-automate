@@ -1,19 +1,19 @@
-handleSearchFunctions(eventObject, BaseUI) {
+handleSearchFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "g")
     {
-        BaseUI.addSearchBar("Ask Google !", "https://www.google.com/search?num=50&safe=off&site=&source=hp&q=REPLACEME&btnG=Search&oq=&gs_l=")
+        Interface.addSearchBar("Ask Google !", "https://www.google.com/search?num=50&safe=off&site=&source=hp&q=REPLACEME&btnG=Search&oq=&gs_l=")
     }
 
     if (currentText = "y")
     {
-        BaseUI.addSearchBar("Search Youtube", "https://www.youtube.com/results?search_query=REPLACEME")
+        Interface.addSearchBar("Search Youtube", "https://www.youtube.com/results?search_query=REPLACEME")
     }
 }
 
-addSearchEditBox(BaseUI) {
+addSearchEditBox(Interface) {
     handlerFunction(eventObject, item) {
-        handleSearchFunctions(eventObject, BaseUI)
+        handleSearchFunctions(eventObject, Interface)
     }
-    BaseUI.addEditBox(handlerFunction, "Enter Search Engine")
+    Interface.addEditBox(handlerFunction, "Enter Search Engine")
 }

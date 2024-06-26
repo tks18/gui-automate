@@ -1,10 +1,10 @@
 #Include "%A_ScriptDir%\UI\commands\excel\helpers\general.ahk"
 
-handleExcelGeneralFunctions(eventObject, BaseUI) {
+handleExcelGeneralFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "nn")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinExist("ahk_exe EXCEL.EXE")
         {
             if WinActive("ahk_exe EXCEL.EXE")
@@ -24,14 +24,14 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "nm")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         Run("excel.exe /m")
     }
 
 
     if (currentText = "tc")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             removeAllFormatting()
@@ -40,7 +40,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "tt")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             formatTable()
@@ -49,7 +49,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "ta")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             formatSheet()
@@ -58,7 +58,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "ts")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             formatSheet()
@@ -68,7 +68,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "ds")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             deleteSheets()
@@ -77,7 +77,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "fv")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             Send("+{F10}")
@@ -90,7 +90,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "fc")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             Send("+{F10}")
@@ -103,7 +103,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "fa")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             Send("+{F10}")
@@ -116,7 +116,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
 
     if (currentText = "convertform")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             convertFormulatoAbsolute()
@@ -124,7 +124,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
     }
 
     if (currentText = "cfs") {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             saveAndClose()
@@ -132,7 +132,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
     }
 
     if (currentText = "cfns") {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             noSaveAndClose()
@@ -140,7 +140,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
     }
 
     if (currentText = "cvvals") {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             convertValueTexttoNumber()
@@ -148,7 +148,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
     }
 
     if (currentText = "createworkbooksummary") {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createWorkbookSheetSummary()
@@ -156,7 +156,7 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
     }
 
     if (currentText = "random") {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             createRandomData()
@@ -164,28 +164,28 @@ handleExcelGeneralFunctions(eventObject, BaseUI) {
     }
     if (currentText = "ism") {
         onNumberofSheetEnter(eventObject, item) {
-        sheetNumbers := BaseUI.BaseGUIUserInputBox.value
+        sheetNumbers := Interface.uiUserInputBox.value
         onSheetNameEnter(eventObject, item) {
-            sheetName := BaseUI.BaseGUIUserInputBox.value
-            BaseUI.destroy()
+            sheetName := Interface.uiUserInputBox.value
+            Interface.destroy()
             if WinActive("ahk_exe EXCEL.EXE") {
                 insertSheets(sheetNumbers, sheetName)
             }
         }
-        BaseUI.addFreeUserInputBox("Sheet Name Template", onSheetNameEnter)
+        Interface.addFreeUserInputBox("Sheet Name Template", onSheetNameEnter)
     }
-    BaseUI.addFreeUserInputBox("Number of Sheets", onNumberofSheetEnter)
+    Interface.addFreeUserInputBox("Number of Sheets", onNumberofSheetEnter)
     }
 
     if (currentText = "iss") {
         onEnterPress(eventObject, item) {
-        sheetName := BaseUI.BaseGUIUserInputBox.value
-        BaseUI.destroy()
+        sheetName := Interface.uiUserInputBox.value
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
             insertSheets(1, sheetName)
         }
     }
-    BaseUI.addFreeUserInputBox("Sheet Name", onEnterPress)
+    Interface.addFreeUserInputBox("Sheet Name", onEnterPress)
     }
 
     return

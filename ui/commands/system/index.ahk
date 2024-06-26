@@ -1,11 +1,11 @@
-handleSystemFunctions(eventObject, BaseUI) {
+handleSystemFunctions(eventObject, Interface) {
     currentText := eventObject.value
 
 }
 
-addSystemEditBox(BaseUI) {
+addSystemEditBox(Interface) {
     handlerFunction(eventObject, item) {
-        handleSystemFunctions(eventObject, BaseUI)
+        handleSystemFunctions(eventObject, Interface)
     }
-    BaseUI.addEditBox(handlerFunction, "System Utilities")
+    Interface.addEditBox(handlerFunction, "System Utilities")
 }

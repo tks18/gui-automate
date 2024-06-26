@@ -1,23 +1,23 @@
 #Include "%A_ScriptDir%\UI\commands\excel\helpers\comments.ahk"
 
-handleExcelCommentFunctions(eventObject, BaseUI) {
+handleExcelCommentFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "rn")
     {
         onEnterPress(eventObject, item) {
-        userInput := BaseUI.BaseGUIUserInputBox.value
-        BaseUI.destroy()
+        userInput := Interface.uiUserInputBox.value
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
             createTodoComment(userInput)
         }
     }
 
-    BaseUI.addFreeUserInputBox("Enter a TODO Comment to add:", onEnterPress)
+    Interface.addFreeUserInputBox("Enter a TODO Comment to add:", onEnterPress)
     }
 
     if (currentText = "rd")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
             deleteCommentsFromRange()
         }
@@ -25,7 +25,7 @@ handleExcelCommentFunctions(eventObject, BaseUI) {
 
     if (currentText = "rsd")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
             deleteCommentsFromSheet()
         }
@@ -33,7 +33,7 @@ handleExcelCommentFunctions(eventObject, BaseUI) {
 
     if (currentText = "rwd")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
             deleteCommentsFromWorkbook()
         }
@@ -41,7 +41,7 @@ handleExcelCommentFunctions(eventObject, BaseUI) {
 
     if (currentText = "rsummarysheet")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
             summarizeCommentsFromSheet()
         }
@@ -49,7 +49,7 @@ handleExcelCommentFunctions(eventObject, BaseUI) {
 
     if (currentText = "rsummarybook")
     {
-        BaseUI.destroy()
+        Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
             summarizeCommentsFromWorkbook()
         }
