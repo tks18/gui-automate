@@ -1,25 +1,18 @@
-#Include "%A_ScriptDir%\UI\commands\excel\helpers\comments.ahk"
-
 handleExcelCommentFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "rn")
     {
-        onEnterPress(eventObject, item) {
-        userInput := Interface.uiUserInputBox.value
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
-            createTodoComment(userInput)
+            runPersonalMacro(EXCELPERSONALMACRONAMES.comments.add)
         }
-    }
-
-    Interface.addFreeUserInputBox("Enter a TODO Comment to add:", onEnterPress)
     }
 
     if (currentText = "rd")
     {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
-            deleteCommentsFromRange()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.comments.delete.activeRange)
         }
     }
 
@@ -27,7 +20,7 @@ handleExcelCommentFunctions(eventObject, Interface) {
     {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
-            deleteCommentsFromSheet()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.comments.delete.worksheet)
         }
     }
 
@@ -35,7 +28,7 @@ handleExcelCommentFunctions(eventObject, Interface) {
     {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
-            deleteCommentsFromWorkbook()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.comments.delete.workbook)
         }
     }
 
@@ -43,7 +36,7 @@ handleExcelCommentFunctions(eventObject, Interface) {
     {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
-            summarizeCommentsFromSheet()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.comments.summarize.worksheet)
         }
     }
 
@@ -51,7 +44,7 @@ handleExcelCommentFunctions(eventObject, Interface) {
     {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
-            summarizeCommentsFromWorkbook()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.comments.delete.workbook)
         }
     }
 

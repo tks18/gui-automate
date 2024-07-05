@@ -1,5 +1,3 @@
-#Include "%A_ScriptDir%\UI\commands\excel\helpers\general.ahk"
-
 handleExcelGeneralFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "nn")
@@ -34,7 +32,7 @@ handleExcelGeneralFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            removeAllFormatting()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.removeAllFormats)
         }
     }
 
@@ -43,7 +41,7 @@ handleExcelGeneralFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            formatTable()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.range.defaultFormat)
         }
     }
 
@@ -52,17 +50,7 @@ handleExcelGeneralFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            formatSheet()
-        }
-    }
-
-    if (currentText = "ts")
-    {
-        Interface.destroy()
-        if WinActive("ahk_exe EXCEL.EXE")
-        {
-            formatSheet()
-            formatActiveRegion()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.range.defaultSheet)
         }
     }
 
@@ -71,7 +59,7 @@ handleExcelGeneralFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            deleteSheets()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.sheets.delete)
         }
     }
 
@@ -119,23 +107,7 @@ handleExcelGeneralFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            convertFormulatoAbsolute()
-        }
-    }
-
-    if (currentText = "cfs") {
-        Interface.destroy()
-        if WinActive("ahk_exe EXCEL.EXE")
-        {
-            saveAndClose()
-        }
-    }
-
-    if (currentText = "cfns") {
-        Interface.destroy()
-        if WinActive("ahk_exe EXCEL.EXE")
-        {
-            noSaveAndClose()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.formula.convertToAbs)
         }
     }
 
@@ -143,50 +115,31 @@ handleExcelGeneralFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            convertValueTexttoNumber()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.values.convertToVals)
         }
     }
 
-    if (currentText = "createworkbooksummary") {
+    if (currentText = "createsummary") {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            createWorkbookSheetSummary()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.otherFunctions.createSummarySheet)
         }
     }
 
-    if (currentText = "random") {
-        Interface.destroy()
-        if WinActive("ahk_exe EXCEL.EXE")
-        {
-            createRandomData()
-        }
-    }
+
     if (currentText = "ism") {
-        onNumberofSheetEnter(eventObject, item) {
-        sheetNumbers := Interface.uiUserInputBox.value
-        onSheetNameEnter(eventObject, item) {
-            sheetName := Interface.uiUserInputBox.value
-            Interface.destroy()
-            if WinActive("ahk_exe EXCEL.EXE") {
-                insertSheets(sheetNumbers, sheetName)
-            }
+        Interface.destroy()
+        if WinActive("ahk_exe EXCEL.EXE") {
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.sheets.addMultiple)
         }
-        Interface.addFreeUserInputBox("Sheet Name Template", onSheetNameEnter)
-    }
-    Interface.addFreeUserInputBox("Number of Sheets", onNumberofSheetEnter)
     }
 
     if (currentText = "iss") {
-        onEnterPress(eventObject, item) {
-        sheetName := Interface.uiUserInputBox.value
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE") {
-            insertSheets(1, sheetName)
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.sheets.addsingle)
         }
     }
-    Interface.addFreeUserInputBox("Sheet Name", onEnterPress)
-    }
-
     return
 }

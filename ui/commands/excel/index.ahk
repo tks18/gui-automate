@@ -1,7 +1,9 @@
-#Include "%A_ScriptDir%\UI\commands\excel\_pivot-tables.ahk"
-#Include "%A_ScriptDir%\UI\commands\excel\_general.ahk"
-#Include "%A_ScriptDir%\UI\commands\excel\_wipro-tables.ahk"
-#Include "%A_ScriptDir%\UI\commands\excel\_comments.ahk"
+#Include "%A_ScriptDir%\ui\commands\excel\macronames.ahk"
+
+#Include "%A_ScriptDir%\UI\commands\excel\pivot-tables.ahk"
+#Include "%A_ScriptDir%\UI\commands\excel\general.ahk"
+#Include "%A_ScriptDir%\UI\commands\excel\wipro-tables.ahk"
+#Include "%A_ScriptDir%\UI\commands\excel\comments.ahk"
 
 handleExcelFunctions(eventObject, Interface) {
     if (!Interface.uiDestroyed) {

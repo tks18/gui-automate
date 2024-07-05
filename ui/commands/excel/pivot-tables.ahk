@@ -1,5 +1,3 @@
-#Include "%A_ScriptDir%\UI\commands\excel\helpers\pivots.ahk"
-
 handleExcelPivotFunctions(eventObject, Interface) {
     currentText := eventObject.value
     if (currentText = "pt")
@@ -7,7 +5,7 @@ handleExcelPivotFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            createPivotTable()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.pivotFunctions.createPivotTable)
         }
     }
 
@@ -16,7 +14,14 @@ handleExcelPivotFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            sortAscendingPivotTable()
+            KeyWait("Alt")
+            Send("{Alt}")
+            KeyWait("A")
+            Send("A")
+            KeyWait("S")
+            Send("S")
+            KeyWait("A")
+            Send("A")
         }
     }
 
@@ -25,7 +30,14 @@ handleExcelPivotFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            sortDescendingPivotTable()
+            KeyWait("Alt")
+            Send("{Alt}")
+            KeyWait("A")
+            Send("A")
+            KeyWait("S")
+            Send("S")
+            KeyWait("D")
+            Send("D")
         }
     }
 
@@ -34,7 +46,7 @@ handleExcelPivotFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            updatePivotStyle()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.pivotFunctions.changePivotStyle)
         }
     }
 
@@ -43,7 +55,7 @@ handleExcelPivotFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            transposePivotFields()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.pivotFunctions.transposeFields)
         }
     }
 
@@ -52,7 +64,7 @@ handleExcelPivotFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            transposePivotValueFields()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.pivotFunctions.changeValueFieldOrientation)
         }
     }
 
@@ -61,7 +73,7 @@ handleExcelPivotFunctions(eventObject, Interface) {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
-            clearPivotFields()
+            runPersonalMacro(EXCELPERSONALMACRONAMES.pivotFunctions.clearFields)
         }
     }
 }
