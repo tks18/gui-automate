@@ -132,13 +132,6 @@ createPivotTable() {
             oExcel.ActiveSheet.Name . "!" . oExcel.ActiveCell.CurrentRegion.Address
         )
 
-        newWorksheetName := ""
-        existingSheetNames := []
-
-        for sheet in oExcel.ActiveWorkbook.Sheets {
-            existingSheetNames.Push(sheet.Name)
-        }
-
         newWorksheet := oExcel.Worksheets.Add()
 
         pivotCache.CreatePivotTable(oExcel.Range(newWorksheet.Name . "!A1"))
