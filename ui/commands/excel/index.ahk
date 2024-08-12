@@ -4,6 +4,7 @@
 #Include "%A_ScriptDir%\UI\commands\excel\general.ahk"
 #Include "%A_ScriptDir%\UI\commands\excel\wipro-tables.ahk"
 #Include "%A_ScriptDir%\UI\commands\excel\comments.ahk"
+#Include "%A_ScriptDir%\UI\commands\excel\performance.ahk"
 
 handleExcelFunctions(eventObject, Interface) {
     if (!Interface.uiDestroyed) {
@@ -20,6 +21,10 @@ handleExcelFunctions(eventObject, Interface) {
 
     if (!Interface.uiDestroyed) {
         handleExcelCommentFunctions(eventObject, Interface)
+    }
+
+    if (!Interface.uiDestroyed) {
+        handleExcelPerformanceFunctions(eventObject, Interface)
     }
 }
 

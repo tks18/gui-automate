@@ -3,7 +3,7 @@
 CapsLock & Space:: {
     toolsGUI := Interface()
     addMainEditBox(toolsGUI)
-    toolsGUI.ui.Show()
+    toolsGUI.refreshUI()
     return
 }
 

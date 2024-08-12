@@ -2,7 +2,7 @@
 
 BACKGROUND := "2D2B55"
 TEXT := "A599E9"
-GUITITLESTYLE := "xm w200 -E0x200 c" . TEXT
+GUITITLESTYLE := " w200 -E0x200 Wrap c" . TEXT
 GUIEDITBOXSTYLE := "xm w200 -E0x200 +Border Background" . BACKGROUND . " c" . TEXT
 GUIBOTTOMTEXTSTYLE := "xm w200 +Center -E0x200 c" . TEXT
 
@@ -14,15 +14,16 @@ Class Interface {
         this.ui.OnEvent("Escape", this.onEscape)
         this.uiDestroyed := false
         this.editBoxTracker := []
+        this.editBox := ""
+        this.editBoxTitle := ""
+        this.editBoxCallback := ""
         this.btnTracker := []
-        this.ui.MarginX := "15"
-        this.ui.MarginY := "15"
+        this.ui.MarginX := "10"
+        this.ui.MarginY := "10"
         this.ui.BackColor := "2D2B55"
         this.ui.SetFont("s9", "Verdana")
         this.ui.Title := "Shan.tk's Tools"
         this.ui.Opt("+AlwaysOnTop -SysMenu -ToolWindow -caption +Border")
-        this.ui.Add("Text", GUIBOTTOMTEXTSTYLE, "Developed by Shan.tk 💜")
-        this.uiTitle := this.ui.Add("Text", GUITITLESTYLE, "Enter the Command:")
     }
 
     #WinActivateForce
@@ -39,7 +40,12 @@ Class Interface {
     }
 
     refreshUI() {
-        this.ui.Show("AutoSize Center")
+        this.ui.Show()
+        xWindowPos := 0
+        this.ui.GetPos(, , &xWindowPos,)
+        xLocation := (A_ScreenWidth / 2) - (xWindowPos / 2) - (xWindowPos / 2)
+        yLocation := 10
+        this.ui.Move(xLocation, yLocation)
     }
 
     disableAllBtns() {
@@ -49,15 +55,26 @@ Class Interface {
     }
 
     addEditBox(onChangeHandler, editTitle := "") {
-        if (editTitle != "") {
-            this.ui.Add("Text", GUITITLESTYLE, editTitle)
+        if (this.editBox = "") {
+            this.editBoxTitle := this.ui.Add("Text", GUITITLESTYLE, "./")
+            this.editBox := this.ui.Add("Edit", GUIEDITBOXSTYLE)
+            this.editBoxCallback := onChangeHandler
+            this.editBox.onEvent("Change", this.editBoxCallback)
+            this.editBox.Focus()
+            return this.editBox
+        } else {
+            newTitle := this.editBoxTitle.value
+            if (editTitle != "") {
+                newTitle := newTitle . this.editBox.value . "/"
+            }
+            this.editBoxTitle.value := newTitle
+            this.editBox.value := ""
+            this.editBox.onEvent("Change", this.editBoxCallback, 0)
+            this.editBoxCallback := onChangeHandler
+            this.editBox.onEvent("Change", onChangeHandler)
+            this.editBox.Focus()
+            return this.editBox
         }
-        this.disableAllEditBoxes()
-        uiEditBox := this.ui.Add("Edit", GUIEDITBOXSTYLE)
-        uiEditBox.onEvent("Change", onChangeHandler)
-        uiEditBox.Focus()
-        this.editBoxTracker.Push(uiEditBox)
-        return uiEditBox
     }
 
     addSearchBar(title, url) {
@@ -78,7 +95,7 @@ Class Interface {
         this.uiDefaultButton.onEvent("Click", onEnterPress)
         this.uiSearchBox.Focus()
         this.btnTracker.Push(this.uiDefaultButton)
-        this.ui.Show("AutoSize")
+        this.refreshUI()
         return this.uiSearchBox
     }
 
@@ -93,7 +110,7 @@ Class Interface {
         this.uiDefaultButton.onEvent("Click", handler)
         this.uiUserInputBox.Focus()
         this.btnTracker.Push(this.uiDefaultButton)
-        this.ui.Show("AutoSize")
+        this.refreshUI()
         return this.uiUserInputBox
     }
 

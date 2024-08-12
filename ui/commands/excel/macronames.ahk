@@ -16,6 +16,12 @@ EXCELPERSONALMACRONAMES := {
         highlighter: "InsertDeloitteStyleHighlighter",
         combo: "InsertDeloitteStyleHighlighterwithConnector"
     },
+    performance: {
+        measureRange: "PerformanceMeasureTiming_Range",
+        measureSheet: "PerformanceMeasureTiming_Sheet",
+        measureWorkbooks: "PerformanceMeasureTiming_Workbooks",
+        measureComprehensive: "PerformanceMeasureTiming_WorkbooksComprehensive"
+    },
     generalFormatting: {
         removeAllFormats: "RemoveAllFormats",
         borders: {
@@ -92,14 +98,17 @@ EXCELPERSONALMACRONAMES := {
 }
 
 runPersonalMacro(name) {
-    KeyWait("Alt")
-    Send("{Alt}")
-    KeyWait("L")
-    Send("L")
-    KeyWait("P")
-    Send("P")
-    KeyWait("M")
-    Send("M")
-    SendText("PERSONAL.xlsb!" . name)
-    Send("{Enter}")
+    if WinActive("ahk_exe EXCEL.EXE")
+    {
+        KeyWait("Alt")
+        Send("{Alt}")
+        KeyWait("L")
+        Send("L")
+        KeyWait("P")
+        Send("P")
+        KeyWait("M")
+        Send("M")
+        SendText("PERSONAL.xlsb!" . name)
+        Send("{Enter}")
+    }
 }

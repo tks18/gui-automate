@@ -35,5 +35,5 @@ addMainEditBox(Interface) {
     handlerFunction(eventObject, item) {
         handleMainFunction(eventObject, Interface)
     }
-    Interface.addEditBox(handlerFunction)
+    Interface.addEditBox(handlerFunction, "Enter Command")
 }
