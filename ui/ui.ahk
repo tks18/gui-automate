@@ -18,12 +18,12 @@ Class Interface {
         this.editBoxTitle := ""
         this.editBoxCallback := ""
         this.btnTracker := []
-        this.ui.MarginX := "10"
-        this.ui.MarginY := "10"
+        this.ui.MarginX := "5"
+        this.ui.MarginY := "5"
         this.ui.BackColor := "2D2B55"
         this.ui.SetFont("s9", "Verdana")
         this.ui.Title := "Shan.tk's Tools"
-        this.ui.Opt("+AlwaysOnTop -SysMenu -ToolWindow -caption +Border")
+        this.ui.Opt("+AlwaysOnTop -SysMenu -ToolWindow -caption")
     }
 
     #WinActivateForce
