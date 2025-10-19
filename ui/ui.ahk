@@ -2,9 +2,10 @@
 
 BACKGROUND := "2D2B55"
 TEXT := "A599E9"
-GUITITLESTYLE := " w200 -E0x200 Wrap c" . TEXT
-GUIEDITBOXSTYLE := "xm w200 -E0x200 +Border Background" . BACKGROUND . " c" . TEXT
-GUIBOTTOMTEXTSTYLE := "xm w200 +Center -E0x200 c" . TEXT
+GUITITLESTYLE := " w400 -E0x200 Wrap c" . TEXT
+GUITITLESTYLECENTER := " w400 -E0x200 +Center Wrap c" . TEXT
+GUIEDITBOXSTYLE := "xm w400 -E0x200 +Border Background" . BACKGROUND . " c" . TEXT
+GUIBOTTOMTEXTSTYLE := "xm w400 +Center -E0x200 c" . TEXT
 
 
 Class Interface {
@@ -23,7 +24,8 @@ Class Interface {
         this.ui.BackColor := "2D2B55"
         this.ui.SetFont("s9", "Verdana")
         this.ui.Title := "Shan.tk's Tools"
-        this.ui.Opt("+AlwaysOnTop -SysMenu -ToolWindow -caption")
+        this.mainTitle := this.ui.Add("Text", GUITITLESTYLECENTER, "Shan.tk's Tools")
+        this.ui.Opt("+AlwaysOnTop -SysMenu -ToolWindow -caption +Border")
     }
 
     #WinActivateForce
@@ -40,11 +42,9 @@ Class Interface {
     }
 
     refreshUI() {
+        xLocation := A_ScreenWidth - 600
+        yLocation := 2
         this.ui.Show()
-        xWindowPos := 0
-        this.ui.GetPos(, , &xWindowPos,)
-        xLocation := (A_ScreenWidth / 2) - (xWindowPos / 2) - (xWindowPos / 2)
-        yLocation := 10
         this.ui.Move(xLocation, yLocation)
     }
 

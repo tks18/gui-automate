@@ -2,7 +2,6 @@
 
 #Include "%A_ScriptDir%\UI\commands\excel\pivot-tables.ahk"
 #Include "%A_ScriptDir%\UI\commands\excel\general.ahk"
-#Include "%A_ScriptDir%\UI\commands\excel\wipro-tables.ahk"
 #Include "%A_ScriptDir%\UI\commands\excel\comments.ahk"
 #Include "%A_ScriptDir%\UI\commands\excel\performance.ahk"
 
@@ -13,10 +12,6 @@ handleExcelFunctions(eventObject, Interface) {
 
     if (!Interface.uiDestroyed) {
         handleExcelPivotFunctions(eventObject, Interface)
-    }
-
-    if (!Interface.uiDestroyed) {
-        handleExcelWiproTableFunctions(eventObject, Interface)
     }
 
     if (!Interface.uiDestroyed) {

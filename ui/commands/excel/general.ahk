@@ -54,12 +54,30 @@ handleExcelGeneralFunctions(eventObject, Interface) {
         }
     }
 
+    if (currentText = "td")
+    {
+        Interface.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.range.defaultSheetRow)
+        }
+    }
+
     if (currentText = "ds")
     {
         Interface.destroy()
         if WinActive("ahk_exe EXCEL.EXE")
         {
             runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.sheets.delete)
+        }
+    }
+
+    if (currentText = "sds")
+    {
+        Interface.destroy()
+        if WinActive("ahk_exe EXCEL.EXE")
+        {
+            runPersonalMacro(EXCELPERSONALMACRONAMES.generalFormatting.sheets.softDelete)
         }
     }
 

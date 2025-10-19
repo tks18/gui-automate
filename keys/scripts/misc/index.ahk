@@ -1,0 +1,1 @@
+#Include './currency-replacements.ahk'

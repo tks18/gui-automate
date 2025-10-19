@@ -19,7 +19,7 @@ EXCELPERSONALMACRONAMES := {
     performance: {
         measureRange: "PerformanceMeasureTiming_Range",
         measureSheet: "PerformanceMeasureTiming_Sheet",
-        measureWorkbooks: "PerformanceMeasureTiming_Workbooks",
+        measureWorkbooks: "PerfeormanceMeasureTiming_Workbooks",
         measureComprehensive: "PerformanceMeasureTiming_WorkbooksComprehensive"
     },
     generalFormatting: {
@@ -33,7 +33,8 @@ EXCELPERSONALMACRONAMES := {
         },
         range: {
             defaultFormat: "DefaultDeloitteRangeConfig",
-            defaultSheet: "FormatSheettoDeloitteFormat"
+            defaultSheet: "FormatSheettoDeloitteFormat",
+            defaultSheetRow: "FormatSheettoDeloitteFormatARow"
         },
         amount: {
             noPrefix: "CustomAmountFormat",
@@ -73,27 +74,9 @@ EXCELPERSONALMACRONAMES := {
         insertCustomStyle: "InsertCustomTableFormat",
         changeTableStyle: "ChangeTableFormattoDeloitte"
     },
-    wiproConfigs: {
-        default: {
-            column: "DeloitteWiproDefaultColumnPivotConfig",
-            row: "DeloitteWiproDefaultRowPivotConfig"
-        },
-        sales: {
-            doc: "DeloitteWiproSalesPivotConfig_Base",
-            usd: "DeloitteWiproSalesPivotConfig_USD",
-            inr: "DeloitteWiproSalesPivotConfig_INR"
-        },
-        zcop: "DeloitteWiproZCOPPivotConfig",
-        ub: "DeloitteWiproUBPivotConfig",
-        fdpob: "DeloitteWiproFDPOBPivotConfig",
-        drs: {
-            doc: "DeloitteWiproDRSPivotConfig_Base",
-            usd: "DeloitteWiproDRSPivotConfig_USD"
-        },
-        drsinv: {
-            doc: "DeloitteWiproDRSINVPivotConfig_Base",
-            usd: "DeloitteWiproDRSINVPivotConfig_USD"
-        }
+    mail: {
+        prepareTemplate: "PrepareMailTemplateSheet",
+        sendEmails: "SendEmailFromTableRef"
     }
 }
 
